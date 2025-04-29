@@ -1,0 +1,165 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SPARTA Multitool</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+    body {
+      background-color: #000;
+      color: #00ff66;
+      font-family: 'Share Tech Mono', monospace;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+
+    .container {
+      padding: 50px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    h1 {
+      font-size: 3em;
+      margin-bottom: 0;
+      text-shadow: 0 0 10px #00ff66;
+    }
+
+    #typing {
+      white-space: pre-line;
+      font-size: 1.3em;
+      line-height: 1.5;
+      margin-bottom: 30px;
+    }
+
+    .tool-image {
+      display: block;
+      margin: 30px auto 10px;
+      max-width: 100%;
+      height: auto;
+      border: 3px solid #00ff66;
+      box-shadow: 0 0 25px #00ff66;
+    }
+
+    .try-it, .about-me {
+      text-align: center;
+      font-size: 1.3em;
+      margin: 40px 0 30px;
+      color: #00ff88;
+    }
+
+    .button-group {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .btn {
+      display: inline-block;
+      margin: 10px;
+      padding: 12px 20px;
+      background-color: #00ff66;
+      color: #000;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 4px;
+      box-shadow: 0 0 10px #00ff66;
+      transition: background 0.3s;
+    }
+
+    .btn:hover {
+      background-color: #00cc55;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.9em;
+      color: #008844;
+      margin-top: 80px;
+      padding: 20px;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    .cursor {
+      animation: blink 1s step-start infinite;
+    }
+  </style>
+</head>
+<body>
+
+  <audio autoplay loop>
+    <source src="ambient-hacker-loop.mp3" type="audio/mpeg">
+  </audio>
+
+  <div class="container">
+    <h1>SPARTA Multitool</h1>
+    <div id="typing"></div>
+
+    <img src="tool-preview.png" alt="SPARTA Tool Screenshot" class="tool-image" />
+
+    <div class="try-it">
+      ⚔️ Try the SPARTA Multitool now — download it and run it locally.
+    </div>
+
+    <div class="button-group">
+      <a class="btn" href="sparta_tool.py" download>⬇️ Download Tool</a>
+      <a class="btn" href="https://discord.gg/YOUR_INVITE_HERE" target="_blank">💬 Join Discord</a>
+      <a class="btn" href="features.html">📁 View Features</a>
+    </div>
+
+    <div class="about-me">
+      <hr style="border: 1px dashed #00ff66; width: 50%; margin: 40px auto;">
+      👨‍💻 <strong>About Me</strong><br><br>
+      I'm <strong>BGDY</strong>, a 13-year-old programmer grinding from his mom's basement. <br>
+      I build tools, bots, and chaos in Python. <br>
+      SPARTA is my digital kingdom — sharpen your script and join me. 🧠
+      <hr style="border: 1px dashed #00ff66; width: 50%; margin: 40px auto;">
+    </div>
+  </div>
+
+  <footer>
+    Made by BGDY & Bogdan | Powered by Harpy 🦅
+  </footer>
+
+  <script>
+    const lines = [
+      "Deploying SPARTA Multitool...",
+      "Initializing modules...",
+      "Loading interface...",
+      "System online. Welcome, BGDY 🛡️"
+    ];
+
+    let line = 0;
+    let char = 0;
+    const speed = 60;
+    const typing = document.getElementById('typing');
+
+    function type() {
+      if (line < lines.length) {
+        typing.innerHTML += lines[line].charAt(char);
+        char++;
+        if (char < lines[line].length) {
+          setTimeout(type, speed);
+        } else {
+          typing.innerHTML += '\n';
+          char = 0;
+          line++;
+          setTimeout(type, 600);
+        }
+      } else {
+        typing.innerHTML += '<span class="cursor">█</span>';
+      }
+    }
+
+    type();
+  </script>
+
+</body>
+</html>
